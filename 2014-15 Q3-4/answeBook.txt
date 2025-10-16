@@ -1,0 +1,118 @@
+3a. Convert the interface of a class into another interface clients expect. Adapter lets classes work together that could not otherwise because of incompatible interfaces.
+
+3b. An object adapter relies on object composition while class adpater uses multiple inheritance.
+
+
+3d.
+
+class BookAdapter extends Book{
+	Comic comic;
+	public BookAdapter(Comic comic){
+		super("dummy","dummy");
+		this.comic = comic;
+	}
+	
+	public String getBookTitle(){
+		return comic.getTitle();
+	}
+	
+	public String getBookSubject(){
+		return comic.getSubject();
+	}
+}
+
+3e.
+
+class Main{
+	public static void main(String [] args){
+		Book adapter = new BookAdapter(new Comic("Superman", "Fiction"));
+		DisplayBook.displayBook(adapter);
+	}
+}
+
+
+
+4a.
+Software entities (classes, modules, functions,etc.) should be Open for Extension but CLosed for Modification.
+
+4b. To avoid the need to add new selection statement inside getAmt method in Chocolate class whenever new product is added.
+
+4c.
+
+
+4d.
+
+class Chocolate{
+	private String code;
+	protected int qty;
+	
+	public Chocolate(int qty, String code){
+		this.qty = qty;
+		this.code = code;
+	}
+	
+	
+	public String getCode(){
+		return code;
+	}
+	
+	public abstract getAmt();
+
+}
+
+class CoffeeChocolate extends Chocolate{
+	private double price;
+	private int qty;
+	
+	
+	public CoffeeChocolate(int qty, String code){
+		super(qty, code);
+	}
+	public get getAmt(){
+		getCoffee();
+	}
+	
+	public double getCoffee(){
+		return qty <= 100 ? price * qty : price * qty * .85;
+	}
+}
+
+
+class HazelnutChocolate extends Chocolate{
+	private double price;
+	
+	
+	public HazelnutChocolate(int qty, String code){
+		super(qty, code);
+	}
+	
+	public get getAmt(){
+		getHazelnut();
+	}
+	
+	public double getHazelnut(){
+		if (qty < 10) { // no discount
+			return price * qty;
+		} else if (qty >= 10 && qty < 100) {
+			return price * qty * .9;
+		} else {
+			return price * qty * .8;
+		}
+	}
+} 
+
+
+4e.
+
+public class Main {
+	public static void main(String [] args){
+		Chocolate item1 = new CoffeeChocolate(30,"item1");
+		Chocolate item2 = new CoffeeChocolate(40,"item2");
+		ArrayList<Chocolate> items = new ArrayList<Chocolate>();
+		items.add(item1);
+		items.add(item2);
+		ChocStore.checkout(items);
+	}
+}
+
+  
