@@ -1,0 +1,112 @@
+Q3
+
+a. Client uses Target interface/class in its codes. Target defines the interface/ class whcih Client uses. 
+
+
+b.(png file)
+
+
+c.
+
+public class EngineAdapter extends FirstEngine{
+	SecondEngine secondEngine;
+	public EngineAdapter(SecondEngine secondEngine){
+		this.secondEngine= secondEngine;
+	}
+	
+	public String getSerialNo ( ) { return secondEngine.getEngineId(); }  
+	public int getSpeed ( ) { return secondEngine.getSpeed(); }  
+	public void decreaseSpeed(int mile ) { secondEngine.addSpeed(-mile); }   
+	public void increaseSpeed(int mile ) { secondEngine.addSpeed(mile); }  
+	
+}
+
+d. The target class is the FirstEngine. Adapter and SecondEngine will both exntends from FirstEngine. However java does not allow mulitple inheritance.
+
+e.
+
+public class Main{
+	public static void main(String[] args){
+		FirstEngine adapter = new EngineAdapter(new SecondEngine("Eng002",123));
+		OldMain.testDrive(adapter);
+	}
+}
+
+
+Q4
+
+a. Software entities (classes, modules, functions, etc.) should be open for extension, but closed for modification.
+
+
+b. There is a selection statement in printLoan method from LoanSummary, each time code need to be modified when new type of loan is added. A Constant and method also need to be added in Loan class when new type adds.
+
+c.(the png file)
+
+
+d. 
+
+public abstract class Loan {  
+	protected String client;   
+	 
+	public Loan (String client)  {     
+	this.client = client;   
+	}   
+	
+	
+	public abstract void loan();
+	
+}
+
+public class Personal extends Loan{
+
+	private int salary;  
+	public static final int Personalratio = 10; 
+
+	public Personal(){
+		super(client);
+		this.salary = salary;
+	}
+	
+	public void loan(){
+		System.out.println("Personal loan for: " + client);   
+		int maxAmount = salary * Personalratio;   
+		System.out.println("Maximum loan amount $:" + maxAmount ); 
+	}
+}
+
+
+public class Morgage extends Loan{
+
+	private int property; 
+	public static final double Mortgageratio = 0.8; 
+
+	public Personal(){
+		super(client);
+		this.property = property;
+	}
+	
+	public void loan(){
+		System.out.println("Mortgage loan for : " + client);   
+		int maxAmount = (int)(property * Mortgageratio);   
+		System.out.println("Maximum loan amount $:" + maxAmount ); 
+	}
+}
+
+public class LoanSummary{ 
+	public static Loan[] loans; 
+	public static void main (String[] args) { 
+		loans = new Loan[2]; 
+		loans[0] = new Personal ("Tom", 15000); 
+		loans[1] = new Morgage ("Mary",3000000); 
+		printLoan(); 
+	} 
+	public static void printLoan(){ 
+		System.out.println("Loan Summary :- "); 
+		for (int i = 0 ; i < loans.length ; i++) { 
+			loans[i].loan();	
+		} 
+	} 
+} 
+
+
+
