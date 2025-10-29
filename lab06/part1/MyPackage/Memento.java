@@ -2,14 +2,14 @@ package MyPackage;
 
 public class Memento {
   private int mystate;
-  MyClass mc;
+  private MyPackage.MyClass mc;
 
   public Memento(MyPackage.MyClass mc) {
     this.mc = mc;
-    mystate = mc.state; // save originator’s state
+    this.mystate = mc.getState(); // use getter
   }
 
   public void restore() {
-    mc.state = mystate;
+    mc.setState(mystate); // use setter
   }
 }
