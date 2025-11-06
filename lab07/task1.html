@@ -1,0 +1,39 @@
+<?xml version = "1.0"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" 
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!-- Geometry.html -->
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+  <title>Circle and Sphere Calculator</title>
+  <script type="text/javascript">
+    var Pi = Math.PI;   // constant for π
+    var radius, circleArea, sphereArea, sphereVolume;
+
+    // read in radius from user as a string
+    radius = window.prompt("Enter radius:", "0");
+
+    // convert radius to integer (use parseInt or Number)
+    radius = parseInt(radius);  // ✅ corrected
+
+    // perform calculations
+    circleArea = Pi * radius * radius;
+    sphereArea = 4 * Pi * radius * radius;
+    sphereVolume = (4 / 3) * Pi * Math.pow(radius, 3);
+
+    // display results in a table
+    document.write("<h1>Calculation Result</h1>");
+    document.write("<table border='1' cellpadding='8'>");
+    document.write("<tr><th>Calculation</th><th>Value</th></tr>");
+    document.write("<tr><td>Circle Area</td><td>" + circleArea.toFixed(2) + "</td></tr>");
+    document.write("<tr><td>Sphere Area</td><td>" + sphereArea.toFixed(2) + "</td></tr>");
+    document.write("<tr><td>Sphere Volume</td><td>" + sphereVolume.toFixed(2) + "</td></tr>");
+    document.write("</table>");
+  </script>
+</head>
+
+<body>
+  <p>Click Refresh (or Reload) to run the script again</p>
+</body>
+
+</html>

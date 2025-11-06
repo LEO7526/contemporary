@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<script>
+    var input, n, d, answer;
+
+    // Get inputs
+    input = window.prompt("Enter n:", "0"); 
+    n = parseInt(input);
+    input = window.prompt("Enter d:", "0"); 
+    d = parseInt(input);
+
+    // (a) Sum of 1 + 2 + 3 + … + n
+    answer = 0;
+    for (var i = 1; i <= n; i++) {
+        answer += i;
+    }
+    alert("part (a) " + answer);
+
+    // (b) Sum of squares: 1 + 4 + 9 + … + n^2
+    answer = 0;
+    for (var i = 1; i <= n; i++) {
+        answer += i * i;
+    }
+    alert("part (b) " + answer);
+
+    // (c) Arithmetic sequence: 1 + (1+d) + (1+2d) + … + (1+n*d)
+    answer = 0;
+    for (var i = 0; i <= n; i++) {
+        answer += (1 + i * d);
+    }
+    alert("part (c) " + answer);
+
+    // (d) Factorial: 1 * 2 * 3 * … * n
+    answer = 1;
+    for (var i = 1; i <= n; i++) {
+        answer *= i;
+    }
+    alert("part (d) " + answer);
+
+    // (e) Final Challenge: 1! * 2! * 3! * … * n!
+    answer = 1;
+    for (var i = 1; i <= n; i++) {
+        var factorial = 1;
+        for (var j = 1; j <= i; j++) {
+            factorial *= j;
+        }
+        answer *= factorial;
+    }
+    alert("part (e) " + answer);
+
+    // Optional: print triangle of factorials in console
+    console.log("Factorial Triangle:");
+    for (var i = 1; i <= n; i++) {
+        var line = "";
+        for (var j = 1; j <= i; j++) {
+            line += j + (j < i ? "*" : "");
+        }
+        console.log(line);
+    }
+</script>
+</head>
+<body>
+    <p>Check alerts for answers. Open console for factorial triangle.</p>
+</body>
+</html>

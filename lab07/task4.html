@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>Multiplication Practice</title>
+  <script type="text/javascript">
+    function askQuestion() {
+      // Generate two random one-digit integers (1–9)
+      var num1 = Math.floor(Math.random() * 9) + 1;
+      var num2 = Math.floor(Math.random() * 9) + 1;
+      var correctAnswer = num1 * num2;
+      var studentAnswer;
+
+      // Keep asking until the student gets it right
+      do {
+        studentAnswer = window.prompt("How much is " + num1 + " times " + num2 + "?", "0");
+        studentAnswer = parseInt(studentAnswer);
+
+        if (studentAnswer === correctAnswer) {
+          alert("Very good!");
+          var another = window.prompt("Would you like to answer another question? (yes or no)", "yes");
+          if (another.toLowerCase() === "yes") {
+            askQuestion(); // new question
+          } else {
+            alert("Thanks for practicing!");
+          }
+          return; // exit after handling correct answer
+        } else {
+          alert("No. Please try again.");
+        }
+      } while (studentAnswer !== correctAnswer);
+    }
+
+    window.onload = askQuestion;
+  </script>
+</head>
+<body>
+  <p>Answer the multiplication questions in the prompt dialog.</p>
+</body>
+</html>
