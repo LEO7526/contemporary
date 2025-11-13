@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Classical Inheritance Example</title>
+</head>
+<body>
+  <script type="text/javascript">
+    // ECMAScript 2022 private fields
+    class Person {
+      #name;
+
+      constructor(name) {
+        this.#name = name;
+      }
+
+      getName() {
+        return this.#name;
+      }
+    }
+
+    class Author extends Person {
+      #books;
+
+      constructor(name, books) {
+        super(name); // Call Person constructor
+        this.#books = books;
+      }
+
+      getBooks() {
+        return this.#books;
+      }
+    }
+
+    // Create Person object
+    const person = new Person("John Smith");
+
+    // Create Author objects
+    const authors = [
+      new Author("Dustin Diaz", ["JavaScript Design Patterns"]),
+      new Author("Ross Harmes", ["JavaScript Design Patterns"])
+    ];
+
+    // Display Person info
+    console.log("class: Person");
+    console.log("name:", person.getName());
+    console.log("");
+
+    // Display Author info
+    authors.forEach(author => {
+      console.log("class: Author");
+      console.log("name:", author.getName());
+      console.log("books:", author.getBooks().join(", "));
+      console.log("");
+    });
+  </script>
+</body>
+</html>
