@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <script>
+    function create() {
+      var newDiv = document.createElement("div");
+      var inputValue = document.getElementById("textInput").value;
+      var newText = document.createTextNode(inputValue);
+
+      if (inputValue.trim() !== "") {
+        var outputBox = document.getElementById("outputBox");
+        newDiv.appendChild(newText);
+        newDiv.style.border = "thin solid rgb(0,255,255)";
+        newDiv.style.width = "100px";
+        outputBox.appendChild(newDiv);
+        document.getElementById("textInput").value = "";
+      }
+    }
+
+    //remove the last element, put its word in textInput
+    function remove() {
+      var outputBox = document.getElementById("outputBox");
+      var lastChild = outputBox.lastElementChild;
+
+      // Only proceed if input is empty and there's something to remove
+      if (document.getElementById("textInput").value.trim() !== "" || !lastChild) {
+        return;
+      }
+
+      // Transfer text and remove the last element
+      document.getElementById("textInput").value = lastChild.textContent;
+      console.log(lastChild.textContent);
+      outputBox.removeChild(lastChild);
+    }
+  </script>
+</head>
+
+<body>
+  <button id="push" onclick="create()">Push</button>
+  <input type="text" width="300px" id="textInput">
+  <button class="pop" onclick="remove()">Pop</button>
+  <div id="outputBox"></div>
+</body>
+
+</html>
