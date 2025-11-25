@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>JSON Parser Demo</title>
+  <script>
+    let parsedObject = null;
+
+    function parseJson() {
+      const input = document.getElementById("jsonInput").value;
+      try {
+        parsedObject = JSON.parse(input);
+        document.getElementById("name").textContent = parsedObject.name || "";
+        document.getElementById("gender").textContent = parsedObject.gender || "";
+      } catch (e) {
+        alert("Invalid JSON format.");
+        parsedObject = null;
+        document.getElementById("name").textContent = "";
+        document.getElementById("gender").textContent = "";
+      }
+    }
+
+    function toJson() {
+      if (parsedObject) {
+        const jsonStr = JSON.stringify(parsedObject);
+        document.getElementById("jsonString").textContent = jsonStr;
+      } else {
+        document.getElementById("jsonString").textContent = "No valid object to convert.";
+      }
+    }
+  </script>
+</head>
+
+<body>
+  <button id="parse" onclick="parseJson()">Parse JSON</button>
+
+  <div style="margin-top: 30px;">
+    <input type="text" id="jsonInput" style="width: 600px; margin-top: 10px;" value=''>
+  </div>
+
+  <div style="margin-top: 30px;">
+    <p>Name: <span id="name"></span></p>
+    <p>Gender: <span id="gender"></span></p>
+  </div>
+
+  <button id="json" style="margin-top: 30px;" onclick="toJson()">To JSON</button>
+
+  <div style="margin-top: 30px;">
+    <label>JSON String: </label>
+    <span id="jsonString"></span>
+  </div>
+</body>
+
+</html>
