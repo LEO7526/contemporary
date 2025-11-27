@@ -1,0 +1,8 @@
+(a) Brielfy describe the main purpose of Abstract Factory Design Pattern
+
+Abstract factory design pattern provides an interface for creating families of related or dependent objects without specifying their concrete classes.
+
+
+(d) Write the Java codes for implementing the revised Production class and one of the
+concrete factory classes in your class diagram given in your answer to Q1 Part (c).
+
