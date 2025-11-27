@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+  <script>
+    $(document).ready(function() {
+      class Report {
+        constructor(headers, details, detailTitle) {
+          this.headers = headers;
+          this.details = details;
+          this.detailTitle = detailTitle;
+        }
+        getHeader() {
+          return this.headers;
+        }
+        getDetails() {
+          return this.details;
+        }
+        getDetailTitle() {
+          return this.detailTitle;
+        }
+        toHTML() {
+          let html = "<table border='1'><tr><td>";
+          // headers
+          for (var i = 0; i < this.headers.length; i++) {
+            html += "<h2>" + h + "</h2>";
+          }
+
+          for (var i = 0; i < this.headers.length; i++) {
+
+          }
+          html += "</td></tr><tr><td><h3>";
+          // detail title
+          html += this.detailTitle + "</h3></td></tr>";
+          // details
+          for (let d of this.details) {
+            html += "<tr><td>" + d + "</td></tr>";
+          }
+          html += "</table>";
+          return html;
+        }
+      }
+      class StudentTranscript extends Report {
+        constructor(headers, details, detailTitle, marks) {
+          super(headers, details, detailTitle); // call the Report's constructor
+          this.marks = marks;
+        }
+        getMark() {
+          return this.marks;
+        }
+        toHTML() {
+          super(headers, details, detailTitle);
+          this.marks = marks;
+          // details with marks
+          for (let i = 0; i < this.details.length; i++) {
+            html += this.details[i] + " : " + this.marks[i];
+          }
+        }
+      }
+      // Test code
+      let headers = ["Module List Report", "IT114105 HD in Software Engineering"];
+      let details = ["Programming", "Network Fundamental"];
+      let detailTitle = "Modules";
+      let r = new Report(headers, details, detailTitle);
+      document.write(r.toHTML());
+
+      let marks = [70, 45];
+      headers = ["Student Transcript", "Wong Tai Man"];
+      detailTitle = "Module Results";
+      let r2 = new StudentTranscript(headers, details, detailTitle, marks);
+      document.write(r2.toHTML());
+    });
+  </script>
+</head>
+
+<body>
+
+</body>
+
+</html>
